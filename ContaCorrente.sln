@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContaCorrente.Model", "ContaCorrente.Models\ContaCorrente.Model.csproj", "{F89D9319-C431-4528-8BC3-61A0118659A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContaCorrente.Repository", "ContaCorrente.Data\ContaCorrente.Repository.csproj", "{A73472F2-999D-4572-A45B-445D00008FC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContaCorrente.Repository", "ContaCorrente.Repository\ContaCorrente.Repository.csproj", "{A73472F2-999D-4572-A45B-445D00008FC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContaCorrente.Web", "ContaCorrente.Web\ContaCorrente.Web.csproj", "{F10ED981-9B48-48AC-939C-65148472462E}"
 EndProject
