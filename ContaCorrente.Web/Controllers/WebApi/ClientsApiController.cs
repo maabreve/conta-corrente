@@ -44,76 +44,57 @@ namespace ContaCorrente.Web.Controllers.WebApi
 
         [Route("api/clients")]
         [System.Web.Http.HttpPost]
-        public async Task<HttpResponseMessage> Post(Client client)
+        public async Task<int> Post(Client client)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var newClient = await _service.AddAsync(client);
-                    var response = Request.CreateResponse(HttpStatusCode.Created, newClient);
-                    return response;
+                    return await _service.AddAsync(client);
                 }
                 else
                 {
-                    return Request.
-                        CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid model"));
                 }
             }
             catch (Exception ex)
             {
-                return Request.
-                    CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message));
             }
 
         }
 
         [Route("api/clients")]
         [System.Web.Http.HttpPut]
-        public async Task<HttpResponseMessage> Put(Client client)
+        public async Task<int> Put(Client client)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return Request.
-                        CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid model"));
                 }
 
-                var newClient = await _service.UpdateAsync(client);
-                if (newClient > 0)
-                {
-                    return Request.
-                        CreateResponse(HttpStatusCode.OK,
-                        "{success:'true', verb:'PUT'}");
-                }
-                else
-                {
-                    return Request.
-                        CreateErrorResponse(HttpStatusCode.NotFound, "Client");
-                }
+                return await _service.UpdateAsync(client);
             }
             catch (Exception ex)
             {
-                return Request.
-                    CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message));
             }
 
         }
 
         [Route("{id:int}")]
         [System.Web.Http.HttpDelete]
-        public async Task<HttpResponseMessage> Delete(int id)
+        public async Task<int> Delete(int id)
         {
             try
             {
-                var newClient = await _service.RemoveAsync(id);
-                return Request.CreateResponse(HttpStatusCode.OK, newClient);
+                return await _service.RemoveAsync(id);
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                return Request.
-                    CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message));
             }
 
         }

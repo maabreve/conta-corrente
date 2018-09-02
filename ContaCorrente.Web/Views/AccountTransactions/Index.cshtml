@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ContaCorrente.Model.AccountTransaction>
+
+@{
+    ViewBag.Title = "Account Transactions";
+}
+
+<h2>Account Transactions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.AccountCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionValue)
+        </th>
+        <th></th>  
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.AccountCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionValue)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

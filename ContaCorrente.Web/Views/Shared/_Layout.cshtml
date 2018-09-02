@@ -6,10 +6,8 @@
     <title>Conta Corrente</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
-    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -19,16 +17,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Conta Corrente", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
+                    <li>@Html.ActionLink("Accounts", "Index", "Accounts")</li>
+                    <li>@Html.ActionLink("Account Transactions", "Index", "AccountTransactions")</li>
+                </ul>
             </div>
         </div>
     </div>
-
     <div class="content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Fleet Tracker</p>
+            <p>&copy; @DateTime.Now.Year - Conta Corrente</p>
         </footer>
     </div>
 

@@ -1,0 +1,49 @@
+﻿@model ContaCorrente.Model.AccountTransaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Account Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.AccountCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.AccountCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionValue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

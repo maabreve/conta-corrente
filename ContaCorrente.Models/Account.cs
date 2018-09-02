@@ -19,7 +19,7 @@ namespace ContaCorrente.Model
 
         // FKs
         public int ClientId { get; set; }
-        public Client Clients { get; set; }
+        public Client Client { get; set; }
 
         public IEnumerable<AccountTransaction> AccountTransactions { get; set; }
     }
