@@ -15,7 +15,6 @@ namespace ContaCorrente.Web.Controllers
 {
     public class ClientsController : Controller
     {
-
         private BaseService<Client> _baseService = new BaseService<Client>("https://localhost:44300/api/clients/");
         
         // GET: Clients
@@ -37,6 +36,11 @@ namespace ContaCorrente.Web.Controllers
 
         // GET: Clients/Create
         public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
         {
             return View();
         }
@@ -92,6 +96,3 @@ namespace ContaCorrente.Web.Controllers
         }
     }
 }
-
-
-//             ViewBag.ClientId = new SelectList(db.Clients, "Id", "Name");

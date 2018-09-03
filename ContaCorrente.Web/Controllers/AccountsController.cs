@@ -32,7 +32,17 @@ namespace ContaCorrente.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            ViewBag.ClientId= new SelectList(await _baseServiceClient.Get(), "Id", "Name");
+            var account = await _baseService.Get(Convert.ToInt32(id));
+            if (account == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            var dolarRate = await HelperService.getExchangeRateDolarUol();
+
+            ViewBag.DolarRate = dolarRate;
+            ViewBag.CurrentBalanceDolar = dolarRate * account.CurrentBalance;
+            ViewBag.ClientId = new SelectList(await _baseServiceClient.Get(), "Id", "Name");
             return View(await _baseService.Get(Convert.ToInt32(id)));
         }
 
@@ -42,7 +52,7 @@ namespace ContaCorrente.Web.Controllers
             ViewBag.ClientId= new SelectList(await _baseServiceClient.Get(), "Id", "Name");
             return View();
         }
-
+        
         // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -60,6 +70,14 @@ namespace ContaCorrente.Web.Controllers
             return View(account);
         }
 
+
+        // GET: Accounts/Edit
+        public async Task<ActionResult> Edit()
+        {
+            ViewBag.ClientId = new SelectList(await _baseServiceClient.Get(), "Id", "Name");
+            return View();
+        }
+        
         // POST: Accounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

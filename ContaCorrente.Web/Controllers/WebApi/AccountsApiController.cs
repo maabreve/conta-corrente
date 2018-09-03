@@ -28,7 +28,7 @@ namespace ContaCorrente.Web.Controllers.WebApi
             return await Task.Run(() => _service.GetAllAsync());
         }
 
-        [Route("{id:int}")]
+        [Route("api/accounts/{id}")]
         [System.Web.Http.HttpGet]
         public async Task<Account> Get(int id)
         {

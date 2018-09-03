@@ -9,13 +9,15 @@
 <div>
     <h4>Account</h4>
     <hr />
+    
+    <h5>Dolar atual: @ViewBag.DolarRate</h5>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Clients.Name)
+            @Html.DisplayNameFor(model => model.Client.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Clients.Name)
+            @Html.DisplayFor(model => model.Client.Name)
         </dd>
 
         <dt>
@@ -34,6 +36,13 @@
             @Html.DisplayFor(model => model.CurrentBalance)
         </dd>
 
+        <dt>
+            Current Balance Dolar
+        </dt>
+
+        <dd>
+            @ViewBag.CurrentBalanceDolar  
+        </dd>
     </dl>
 </div>
 <p>
